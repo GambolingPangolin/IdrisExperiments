@@ -8,13 +8,14 @@ mutual
   export
   data SortedList : Type -> Type where
     Nil : SortedList a
+
+    ||| @ x is the element to add
+    ||| @ xs is the sorted list to be extended
+    ||| We also include a proof that the element x is no larger than the other 
+    ||| elements in the list
     Cons : (Ord a) => 
-           -- The element to add
            (x : a) ->
-           -- The sorted list to extend
            (xs : SortedList a) ->
-           -- The proof that the element is less than or equal to the other
-           -- elements in the list
            So (noMoreThanH x xs) -> 
            SortedList a
 
